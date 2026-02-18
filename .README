@@ -1,0 +1,99 @@
+Big Data Analytics Assignment: Fast Fashion Sustainability Analysis
+
+This research project investigates the environmental impact of the fast fashion industry using big data analytics techniques. The fashion sector has become a high resource industries contributing significantly to carbon emissions, water consumption, and waste generation. This study uses predictive modeling and clustering techniques to analyze sustainability patterns across fashion brands, providing actionable insights for reducing environmental impact.
+
+The Challenge
+The fast fashion industry faces mounting pressure to address its environmental footprint, which includes:
+Significant contribution to global carbon emissions across the entire garment lifecycle
+Extensive water consumption for textile production, dyeing, and finishing processes
+Challenges in accurately measuring and forecasting environmental impact
+Need for transparency and accountability to maintain consumer trust and meet ESG standards
+
+Methodology: CRISP-DM Framework
+This project follows the Cross-Industry Standard Process for Data Mining (CRISP-DM) methodology:
+
+1. Business Understanding
+Identified the fashion industry's significant environmental impact
+Recognized the need for predictive tools to measure emissions and water consumption
+Established goals for supporting informed sustainable decision-making
+
+2. Data Understanding
+Dataset: "The True Cost of Fast Fashion" from Kaggle
+Key attributes: Monthly production (tonnes), annual release cycles, water usage, landfill waste, carbon emissions, sustainability scores, transparency indices, compliance scores, ethical ratings, environmental cost indices
+Exploratory analysis: Distributions, correlations, and potential biases investigated
+
+3. Data Preparation
+Missing value treatment using average imputation
+Feature engineering (created normalized environmental efficiency indicators):
+- Water_per_tonne: Water usage normalized by production
+- Waste_per_tonne: Waste generated per production unit
+- Price_per_cycle: Average price divided by release cycles
+- Log_Emissions: Log-transformed emissions for skewed data stabilization
+Correlation matrix analysis for multicollinearity detection
+Z-transformation standardization
+70/30 train-test split
+
+4. Modeling
+Regression Tasks
+Carbon Emissions (tCO2e) - Linear Regression vs. Gradient Boosted Trees
+Water Usage (Million Litres) - Ridge Regression vs. XGBoost
+K-Means vs. DBSCAN - Segment brands/countries by sustainability profiles
+
+5. Evaluation
+Regression metrics: RMSE, MAE, Relative Error, Correlation Coefficient, R²
+Clustering metrics: Silhouette Score, Davies-Bouldin Index, visual cluster analysis
+Cross-validation and hyperparameter tuning applied
+
+6. Deployment & Reporting
+Visualization techniques for results communication
+Connection of technical findings to business challenges
+Actionable recommendations for stakeholders
+
+Modeling Techniques & Validation
+Task 1: Carbon Emissions Prediction
+Models Implemented
+Linear Regression 
+- Baseline model assuming linear relationships
+- Standard implementation
+Gradient Boosted Trees (GBT)
+- Ensemble method with sequential tree building
+- 200 trees, max depth 8, learning rate 0.05
+Visualization: Scatter plots comparing actual vs. predicted emissions clearly demonstrate GBT's superior performance with points closely aligned along the diagonal.
+
+Task 2: Water Usage Prediction
+Models Implemented
+Ridge Regression	
+- Linear regression with L2 regularization	
+- Gaussian distribution, identity link, automatic solver
+XGBoost	
+- Gradient boosting with decision trees	
+- Learning rate 0.1, max depth 6, subsample 0.8, 25 rounds, λ=1.0
+Visualization: XGBoost scatterplot shows tight clustering around the diagonal line, confirming superior predictive accuracy.
+
+Task 3: Sustainability Clustering
+Attributes Used
+- Sustainability Score
+- Transparency Index
+- Compliance Score
+- Ethical Rating
+- Environmental Cost Index
+K-Means Clustering
+Optimization: Elbow method testing K values from 2-10 using Loop Parameters operator
+DBSCAN Clustering
+Parameters optimized: Epsilon 0.1-0.3, minimum points 3-5
+Visualization outputs: Scatter plots showing relationships between sustainability attributes, frequency distributions, brand/country distributions
+
+
+Key Findings
+1. Predictive Modeling Insights
+- Non-linear models significantly outperform linear approaches for both carbon emissions and water usage prediction
+- Gradient Boosted Trees achieved 0.904 correlation for emissions prediction, reducing relative error to just 18.40%
+- XGBoost explained 97% of variance in water usage (R² = 0.968) with near-perfect correlation (0.984)
+- Linear models (Linear Regression, Ridge) provide useful baselines but fail to capture complex interactions between production, pricing, and environmental factors
+
+2. Clustering Insights
+- K-Means provides clear, interpretable segmentation with 5 distinct sustainability profiles
+- DBSCAN complements K-Means by identifying outliers and density-based patterns
+- Both methods reveal actionable groupings, from sustainability leaders to underperformers
+- Outliers detected may represent data anomalies or unique business cases requiring targeted intervention
+
